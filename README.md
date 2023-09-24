@@ -1,5 +1,5 @@
 # FreshCart-Ecommerce
 FreshCart Ecommerce Website Using Angular
 
-## Dimo :-
+## Demo :-
 * https://nadaayman20.github.io/FreshCart-Ecommerce/
