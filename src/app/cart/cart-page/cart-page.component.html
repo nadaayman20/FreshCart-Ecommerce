@@ -1,0 +1,49 @@
+<div class="container py-5 mt-5">
+  <div class="bg-main-light p-5 shadow rounded-4" >
+      <h3 class="text-center">Cart Shop </h3>
+<div *ngIf="cartDetails?.data">
+
+     <div class="d-flex align-items-center justify-content-between mt-3">
+         <h6>Total Price : <span class="text-main">{{cartDetails.data.totalCartPrice}}</span></h6>
+         <button class="btn btn-outline-danger" (click)="clearCart()">
+          <i class="fa-solid fa-trash"></i>
+          Clear Cart
+         </button>
+
+     </div>
+
+     <div class="row d-flex my-3 border-bottom p-2 align-items-center" *ngFor="let product of cartDetails.data.products | filterCart">
+        <div class="col-md-1">
+            <img [src]="product.product.imageCover" alt="" class="w-100">
+        </div>
+        <div class="col-md-11">
+          <div class=" d-flex justify-content-between">
+          <div>
+              <h5 class="small">{{product.product.title}}</h5>
+              <h6 class="text-main">Price : {{product.price}} EGP</h6>
+              <button class="btn btn-sm p-0 m-0 text-danger" (click)="removeItem(product.product.id)">
+                <i class="fa-solid fa-trash"></i>
+                Remove
+              </button>
+          </div>
+          <div>
+            <button class="btn btn-count" (click)="updateCart(product.product.id ,product.count + 1)"> + </button>
+            <span class="mx-3">{{product.count}}</span>
+            <button  class="btn btn-count" (click)="updateCart(product.product.id, product.count - 1)"> - </button>
+          </div>
+          </div>
+        </div>
+     </div>
+
+     <button class="btn main-btn m-0">
+      <a [routerLink]="['/checkout/',cartDetails.data._id]" class="text-white">Online Payment
+        <img src="./assets/images/visa.svg" style="width: 40px;" alt="">
+       </a>
+   </button>
+   </div>
+  </div>
+</div>
+
+<section class="border rounded  p-3 mx-auto w-50 mb-5">
+  <button class="btn main-btn  text-white w-100" routerLink="/allorders">My Orders</button>
+</section>

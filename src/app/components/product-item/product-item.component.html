@@ -1,0 +1,25 @@
+<div class="product px-2 py-4 position-relative">
+<span class="icon position-absolute" role="button"  *ngIf="!wishlist.includes(product._id)" (click)="addProductToWishlist(product._id)">
+  <i class="fa-solid fa-heart text-main fs-3 " ></i>
+</span>
+<span class="icon position-absolute" role="button"  *ngIf="wishlist.includes(product._id)" (click)="RemovefromWishlist(product._id)">
+  <i class="fa-solid fa-heart-crack text-main fs-3"></i>
+</span>
+  <header href="" [routerLink]="['/productsDetails' , product._id]">
+  <div class="image ">
+    <img [src]="product.imageCover" alt="" class="w-100">
+  </div>
+    <p class="text-main">{{product.category.name}}</p>
+    <h2 class="h6">{{product.title.split(" ").splice(0,2).join(" ")}}</h2>
+    <div class="d-flex justify-content-between">
+       <span>{{product.price | concat}} EGP</span>
+       <div>
+         <i class="fa fa-star rating-color"></i>
+         {{product.ratingsAverage}}
+       </div>
+    </div>
+  </header>
+    <button class="btn bg-main w-100 text-white" (click)="addProduct(product._id)">+ Add</button>
+
+
+ </div>

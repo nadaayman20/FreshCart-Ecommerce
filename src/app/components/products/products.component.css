@@ -1,0 +1,10 @@
+.page-link {
+  background-color: transparent;
+  color: var(--main-color);
+  cursor: pointer;
+}
+.page-link:hover {
+    background-color: var(--main-color);;
+    color: #fff;
+  }
+

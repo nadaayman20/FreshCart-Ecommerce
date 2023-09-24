@@ -1,0 +1,31 @@
+<div class="container w-50 mx-auto py-5 my-5">
+  <div class="bg-main-light p-5 shadow rounded-4">
+   <form [formGroup]="sippingAddres" (ngSubmit)="handelOnline()">
+    <div class="mb-2">
+      <label for="details" class="mb-2">Details</label>
+      <input type="text" id="details" class="form-control" formControlName="details" placeholder="Enter Details">
+        <div class="alert alert-danger" *ngIf="sippingAddres.get('details')?.errors && sippingAddres.get('details')?.touched">
+          <p class="mb-0" *ngIf="sippingAddres.get('details')?.getError('required') ">This field is required</p>
+          <p class="mb-0" *ngIf="sippingAddres.get('details')?.getError('minlength')">min length is 5</p>
+      </div>
+   </div>
+    <div class="mb-2">
+      <label for="phone" class="mb-2">Phone</label>
+      <input type="text" id="phone" class="form-control" formControlName="phone" placeholder="Enter Phone">
+      <div class="alert alert-danger" *ngIf="sippingAddres.get('phone')?.errors && sippingAddres.get('phone')?.touched">
+        <p class="mb-0" *ngIf="sippingAddres.get('phone')?.getError('required') ">This field is required</p>
+    </div>
+   </div>
+    <div class="mb-4">
+      <label for="city" class="mb-2">City</label>
+      <input type="text" id="city" class="form-control" formControlName="city" placeholder="Enter City">
+      <div class="alert alert-danger" *ngIf="sippingAddres.get('city')?.errors && sippingAddres.get('city')?.touched">
+        <p class="mb-0" *ngIf="sippingAddres.get('city')?.getError('required') ">This field is required</p>
+    </div>
+   </div>
+   <button class="btn main-btn text-white w-100" [disabled]="sippingAddres.invalid">Pay</button>
+   </form>
+</div>
+</div>
+
+

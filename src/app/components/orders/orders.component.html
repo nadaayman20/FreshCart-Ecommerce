@@ -1,0 +1,72 @@
+<div class="py-5">
+  <section
+  *ngIf="ordersData.length; else oreder"
+  class="rounded shadow bg-main-light w-75 mx-auto p-3 allorders py-5 mt-5"
+>
+  <h1 class="text-center h4">All Orders</h1>
+
+  <div
+    class="row align-items-center border rounded m-2 p-2"
+    *ngFor="let row of ordersData; index as i"
+  >
+    <h3 class="h6">Order: {{ i + 1 }}</h3>
+    <div class="col-md-8">
+      <div *ngFor="let cartItem of row.cartItems" class="ps-5 mb-1">
+        <div class="product-item d-flex align-items-center gap-3">
+          <img
+            width="70"
+            [src]="cartItem.product.imageCover"
+            [alt]="cartItem.product.title"
+          />
+          <div class="product-info">
+            <h3 class="h6 small text-main">
+              {{ cartItem.product.title }}
+            </h3>
+
+            <span class="text-muted d-block"> Count:{{ cartItem.count }} </span>
+            <span class="text-muted d-block"> Price:{{ cartItem.price }} </span>
+          </div>
+        </div>
+
+        <hr class="border-warning mx-5" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="border border-dark rounded p-1">
+        <p class="mb-0">
+          <span> Is Delivered: </span>
+          <span
+            [class]="row.isDelivered ? 'bg-success' : 'bg-danger'"
+            class="badge"
+            >{{ row.isDelivered ? "Yes" : "No" }}</span
+          >
+        </p>
+
+        <p class="mb-0">
+          <span> Is Paid: </span>
+          <span
+            class="badge"
+            [class]="row.isPaid ? 'bg-success' : 'bg-danger'"
+            >{{ row.isPaid ? "Yes" : "No" }}</span
+          >
+        </p>
+        <span class="d-block">
+          Payment Method Type: {{ row.paymentMethodType }}
+        </span>
+        <span class="d-block">
+          totalOrderPrice: {{ row.totalOrderPrice }}
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <hr class="my-3 mx-5" />
+    </div>
+  </div>
+</section>
+
+<ng-template #oreder>
+  <h1 class="text-center my-5 display-5">Your Orders Is Empty...</h1>
+</ng-template>
+
+</div>

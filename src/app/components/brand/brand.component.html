@@ -1,0 +1,14 @@
+<div class="container py-5 mt-5">
+   <div class="row g-4">
+      <div class="col-lg-3 col-md-6" *ngFor="let brand of allBrands">
+          <div class="card p-3 " role="button" [routerLink]="['/brandDetails/', brand._id]">
+            <div class="image text-center">
+              <img src="{{brand.image}}" alt="">
+           </div>
+             <div class="text">
+                <h5 class="text-main">{{brand.name}}</h5>
+             </div>
+          </div>
+      </div>
+   </div>
+</div>

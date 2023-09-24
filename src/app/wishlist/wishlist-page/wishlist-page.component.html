@@ -1,0 +1,43 @@
+<section class="container" *ngIf="whishList.length; else whish">
+  <div
+    class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-6 justify-content-center py-5 mt-5"
+  >
+    <div class="col" *ngFor="let item of whishList">
+      <div class="product p-2">
+        <div class="ptorcut-area position-relative">
+          <span (click)="removeFromWhish(item._id)" role="button" class="icon position-absolute top-0 end-0">
+            <i class="fa-solid fa-heart-crack text-main fs-3"></i>
+          </span>
+          <header role="button" [routerLink]="['/productsDetails', item._id]">
+            <img
+              loading="lazy"
+              class="w-100"
+              [src]="item.imageCover"
+              [alt]="item.title"
+            />
+
+            <p class="text-main">{{item.category.name}}</p>
+            <h2 class="h6">{{item.title.split(" ").splice(0,2).join(" ")}}</h2>
+          </header>
+
+          <div class="d-flex justify-content-between">
+            <span>total: {{item.price}} EGP</span>
+            <div>
+              <i class="fa fa-star rating-color"></i>
+              {{item.ratingsAverage}}
+            </div>
+        </div>
+        </div>
+        <button (click)="addToCart(item._id)" class="add-btn main-btn w-100 my-2">
+          + Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #whish>
+<div class="py-5 mt-5">
+  <h3 class="text-center my-3 display-5">Your WhishList Is Empty...</h3>
+</div>
+</ng-template>

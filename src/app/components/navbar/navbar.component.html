@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top  mb-2">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="./assets/images/freshcart-logo.svg" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLogin">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/products" routerLinkActive="active">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/brand" routerLinkActive="active">Brands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/MainCategories" routerLinkActive="active">Categories</a>
+        </li>
+
+      </ul>
+
+      <div class="d-flex align-items-center ms-auto">
+
+      <ul class="list-unstyled d-flex mb-0 align-items-center">
+        <li class="mx-1 navbar-nav">
+          <a routerLink="/login" routerLinkActive="active" class="nav-link" *ngIf="!isLogin">Login</a>
+        </li>
+        <li class="mx-1 position-relative navbar-nav mt-2">
+          <a routerLink="/wishlist"  class="nav-link"  *ngIf="isLogin">
+            <i class="fa-solid fa-heart fs-4 text-main "></i>
+            <div class="badge bg-main position-absolute top-0 translate-middle">{{numberOfWishlist}}</div>
+          </a>
+        </li>
+        <li class="nav-item mx-3" *ngIf="isLogin">
+          <div class="dropdown">
+            <button  class="dropdown-toggle" type="button"
+              data-bs-toggle="dropdown" aria-expanded="false" >
+              <i class="fas fa-user text-success"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item small"
+                  routerLinkActive="active-link" routerLink="/setting/reseat" >Forgot Password</a >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item small"
+                  routerLinkActive="active-link"
+                  routerLink="/setting/change"
+                  >Update password</a
+                >
+              </li>
+
+              <li>
+                <a class="dropdown-item small"
+                  routerLinkActive="active-link"
+                  routerLink="/allorders">My Orders</a >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mx-2 position-relative navbar-nav mt-2">
+          <a routerLink="/cart"  class="nav-link"  *ngIf="isLogin">
+            <i class="fa-solid fa-cart-shopping fs-5 text-main pt-1"></i>
+            <div class="badge bg-main position-absolute top-0 translate-middle">{{numberOfCarts}}</div>
+          </a>
+        </li>
+        <li class="mx-2 navbar-nav">
+          <a routerLink="/signup" routerLinkActive="active" class="nav-link" *ngIf="!isLogin">Register</a>
+        </li>
+
+      </ul>
+
+      <ul class="list-unstyled d-flex mb-0 mx-2" *ngIf="isLogin">
+        <li class="mx-2">
+          <i class="fab fa-instagram"></i>
+        </li>
+        <li class="mx-2">
+          <i class="fab fa-facebook"></i>
+        </li>
+        <li class="mx-2">
+          <i class="fab fa-youtube"></i>
+        </li>
+      </ul>
+      <p class="mx-2 navbar-nav  cursor-pointer" (click)="logOut()">
+        <a class="nav-link" *ngIf="isLogin">LogOut</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</nav>
